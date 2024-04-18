@@ -66,5 +66,3 @@ jobs:
         name: "Build ${{ env.BUILD_NUMBER }}"
         tag: "build-${{ env.BUILD_NUMBER }}"
         body: |
-          Place the plugin in game/csgo/addons/counterstrikesharp/plugins/CS2-AntiVPN
-          After first launch, u need to configure plugin in  addons/counterstrikesharp/configs/plugins/CS2-AntiVPN/CS2-AntiVPN.json
