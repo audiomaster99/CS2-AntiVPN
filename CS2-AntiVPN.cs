@@ -13,6 +13,7 @@ namespace CS2_AntiVPN;
 public class AntiVPNConfig : BasePluginConfig
 {
 	[JsonPropertyName("ApiKey")] public string ApiKey { get; set; } = "";
+	[JsonPropertyName("white-list-steamid")] public List<string> WhiteListSteamID { get; set; } = new List<string> { "76561198010846444" };
 }
 
 public class CS2_AntiVPN : BasePlugin, IPluginConfig<AntiVPNConfig>
@@ -54,6 +55,9 @@ public class CS2_AntiVPN : BasePlugin, IPluginConfig<AntiVPNConfig>
 		if (player == null || !player.IsValid || player.IsBot || player.IsHLTV || player.IpAddress == null) return;
 
 		string ipAddress = player.IpAddress.Split(":")[0];
+
+		if (Config.WhiteListSteamID.Contains(player.SteamID.ToString()))
+			return;
 
 		Task.Run(async () =>
 		{
